@@ -9,14 +9,14 @@ import { ITodo } from '../interfaces/itodo';
 export class TodoEditComponent implements OnInit {
   modalInstance;
   todo: ITodo;
-  newDescription: string;
+  // newDescription: string;
   constructor() { }
 
   ngOnInit() {
   }
-  edit() {
-    this.modalInstance.close(this.newDescription);
-  }
+  // edit() {
+  //   this.modalInstance.close(this.newDescription);
+  // }
   close() {
     this.modalInstance.close();
   }
