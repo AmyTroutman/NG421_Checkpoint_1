@@ -5,9 +5,9 @@
         <p *ngIf="todo.description!=''">{{todo.description}}</p>
     </div>
     <div class="text-center">
-        <select name="status" [(ngModel)]="todo.status" class="custom-select custom-select-sm" mat-input>
+        <!-- <select name="status" [(ngModel)]="todo.status" class="custom-select custom-select-sm" mat-input>
             <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
-        </select>
+        </select> -->
         <button type="button" (click)=editTodo(todo) class="btn btn-outline-secondary btn-sm">Edit</button>
         <button type="button" (click)=deleteTodo(todo) class="btn btn-outline-danger btn-sm">Delete</button>
         

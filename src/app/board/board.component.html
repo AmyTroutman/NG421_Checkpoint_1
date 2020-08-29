@@ -1,14 +1,23 @@
 <div class="row">
-    <div class="col-md-4">
+    <div cdkDropList #moviesList="cdkDropList" 
+    [cdkDropListData]="todos"
+    cdkDragHandle
+    [cdkDropListConnectedTo]="[done, doing]" class="col-md-4" (cdkDropListDropped)="drop($event)">
       <h3>Todo</h3>
-      <app-todo-list status="Todo"></app-todo-list>
+      <app-todo-list ></app-todo-list>
     </div>
-    <div class="col-md-4">
+    <div cdkDropList #doing="cdkDropList" 
+    [cdkDropListData]="doing"
+    cdkDragHandle
+    [cdkDropListConnectedTo]="[todos, done]" class="col-md-4" (cdkDropListDropped)="drop($event)">
       <h3>Doing</h3>
-      <app-todo-list status="Doing"></app-todo-list>
+      <app-todo-list ></app-todo-list>
     </div>
-    <div class="col-md-4">
+    <div cdkDropList #done="cdkDropList" 
+    [cdkDropListData]="done"
+    cdkDragHandle
+    [cdkDropListConnectedTo]="[todos, doing]" class="col-md-4" (cdkDropListDropped)="drop($event)">
       <h3>Done</h3>
-      <app-todo-list status="Done"></app-todo-list>
+      <app-todo-list ></app-todo-list>
     </div>
   </div>
