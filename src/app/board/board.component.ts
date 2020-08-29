@@ -10,8 +10,6 @@ import { TodoService } from '../services/todo.service';
 })
 export class BoardComponent implements OnInit {
  todos: ITodo[];
- doing: ITodo[] = [];
- done: ITodo[] = [];
 
   constructor(private todoService: TodoService, private cdRef: ChangeDetectorRef) { }
 //   ngAfterViewChecked() {

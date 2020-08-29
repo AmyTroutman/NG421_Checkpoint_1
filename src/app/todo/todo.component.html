@@ -1,4 +1,4 @@
-<div class="view">
+<div class="view" cdkDropListGroup cdkDrag *ngFor="let todo of todos">
     <div class="text-center">
         <label *ngIf="!isEditing" (dblclick)="isEditing=true" [ngClass]="{'doing' : todo.status === 'Doing', 'done' : todo.status === 'Done'}">{{todo.title}}</label>
         <input (blur)="isEditing=false" (keyup.enter)="isEditing=false" *ngIf="isEditing" [(ngModel)]="todo.title" mat-input>

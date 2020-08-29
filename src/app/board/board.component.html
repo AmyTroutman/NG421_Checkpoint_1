@@ -1,23 +1,28 @@
-<div class="row">
-    <div cdkDropList #moviesList="cdkDropList" 
-    [cdkDropListData]="todos"
-    cdkDragHandle
-    [cdkDropListConnectedTo]="[done, doing]" class="col-md-4" (cdkDropListDropped)="drop($event)">
-      <h3>Todo</h3>
-      <app-todo-list ></app-todo-list>
-    </div>
-    <div cdkDropList #doing="cdkDropList" 
-    [cdkDropListData]="doing"
-    cdkDragHandle
-    [cdkDropListConnectedTo]="[todos, done]" class="col-md-4" (cdkDropListDropped)="drop($event)">
-      <h3>Doing</h3>
-      <app-todo-list ></app-todo-list>
-    </div>
-    <div cdkDropList #done="cdkDropList" 
-    [cdkDropListData]="done"
-    cdkDragHandle
-    [cdkDropListConnectedTo]="[todos, doing]" class="col-md-4" (cdkDropListDropped)="drop($event)">
-      <h3>Done</h3>
-      <app-todo-list ></app-todo-list>
-    </div>
+<div class="row" cdkDropListGroup>
+  <div cdkDropList cdkDragHandle class="col-md-4">
+    <h3>Todo</h3>
+    <div class="view" cdkDropList cdkDrag *ngFor="let todo of todos">
+      <div class="text-center">
+          <label  (dblclick)="isEditing=true" [ngClass]="{'doing' : todo.status === 'Doing', 'done' : todo.status === 'Done'}">{{todo.title}}</label>
+          <input (blur)="isEditing=false" (keyup.enter)="isEditing=false"  [(ngModel)]="todo.title" mat-input>
+          <p *ngIf="todo.description!=''">{{todo.description}}</p>
+      </div>
+      <div class="text-center">
+          <!-- <select name="status" [(ngModel)]="todo.status" class="custom-select custom-select-sm" mat-input>
+              <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+          </select> -->
+          <button type="button" class="btn btn-outline-secondary btn-sm">Edit</button>
+          <button type="button" class="btn btn-outline-danger btn-sm">Delete</button>
+          
+      </div>
   </div>
+  </div>
+  <div cdkDropList cdkDragHandle class="col-md-4">
+    <h3>Doing</h3>
+    <div></div>
+  </div>
+  <div cdkDropList cdkDragHandle class="col-md-4">
+    <h3>Done</h3>
+    <div></div>
+  </div>
+</div>

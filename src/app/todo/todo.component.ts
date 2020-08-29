@@ -3,7 +3,8 @@ import {TodoService} from '../services/todo.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { TodoEditComponent } from '../todo-edit/todo-edit.component';
-
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { ITodo } from '../interfaces/itodo';
 
 @Component({
   selector: 'app-todo',
@@ -12,11 +13,13 @@ import { TodoEditComponent } from '../todo-edit/todo-edit.component';
 })
 export class TodoComponent implements OnInit {
   @Input() todo;
+  todos: ITodo[];
   constructor(private todoService: TodoService, private modalService: NgbModal) { }
   todoTitle = '';
   isEditing = false;
   statuses: string[] = this.todoService.getStatuses();
   ngOnInit() {
+    this.todos = this.todoService.getTodos();
   }
   async deleteTodo(todo) {
     let result;
