@@ -4,6 +4,7 @@ import { TodoService } from '../services/todo.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ActivatedRoute } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-todo-table',
@@ -12,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TodoTableComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true})paginator: MatPaginator;
   displayedColumns: string[] = ['title', 'description', 'status', 'createdAt'];
   dataSource: MatTableDataSource<ITodo>;
 
@@ -20,6 +22,7 @@ export class TodoTableComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.todoService.getTodos());
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string) {
