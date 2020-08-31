@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ITodo } from '../interfaces/itodo';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-todo-edit',
@@ -7,7 +8,7 @@ import { ITodo } from '../interfaces/itodo';
   styleUrls: ['./todo-edit.component.css']
 })
 export class TodoEditComponent implements OnInit {
-  modalInstance;
+  modalInstance: NgbModalRef;
   todo: ITodo;
   newDescription: string;
   constructor() { }
@@ -15,7 +16,7 @@ export class TodoEditComponent implements OnInit {
   ngOnInit() {
   }
   edit() {
-    this.modalInstance.close(this.newDescription);
+    this.modalInstance.close();
   }
   close() {
     this.modalInstance.close();

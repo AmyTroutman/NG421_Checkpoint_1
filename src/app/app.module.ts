@@ -25,7 +25,7 @@ import { ConfirmationModalComponent } from './confirmation-modal/confirmation-mo
 const appRoutes = [
   { path: 'table', component: TodoTableComponent},
   { path: 'board', component: BoardComponent},
-  { path: '',   redirectTo: '/board', pathMatch: 'full' }
+  { path: '',  component: TodoTableComponent }
 ];
 const result = RouterModule.forRoot(appRoutes);
 
