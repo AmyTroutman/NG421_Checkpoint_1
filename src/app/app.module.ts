@@ -26,6 +26,7 @@ const appRoutes = [
   { path: 'table', component: TodoTableComponent},
   { path: 'board', component: BoardComponent},
   { path: '',  component: TodoTableComponent }
+  // {path: '', redirectTo: '/board', pathMatch: 'full'}
 ];
 const result = RouterModule.forRoot(appRoutes);
 
